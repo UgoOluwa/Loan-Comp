@@ -26,6 +26,7 @@ namespace Loan_Comp.Models
 
         public DbSet<Clicks> Clicks { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Info> Info { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

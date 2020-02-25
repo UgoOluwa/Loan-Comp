@@ -45,4 +45,13 @@ namespace Loan_Comp.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
+
+    public class Info
+    {
+        [Key]
+        public int InfoId { get; set; }
+        public string UserId { get; set; }
+        public double Amount { get; set; }
+        public double Duration { get; set; }
+    }
 }

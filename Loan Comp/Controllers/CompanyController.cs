@@ -63,7 +63,20 @@ namespace Loan_Comp.Controllers
 
             using (var context = new ApplicationDbContext())
             {
+                //Get the Current User
+                var currentUser = System.Web.HttpContext.Current.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>()
+                    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                var info = new Info
+                {
+                    Duration = company.Duration,
+                    Amount = company.MinimumAmount,
+                    UserId = currentUser.Id
+                };
+
+                context.Info.Add(info);
                 var companies = context.Companies.ToList();
+                context.SaveChanges();
                 var companiesRequired = CheckAmount(companies, company);
                 ViewBag.Amount = company.MinimumAmount;
                 return View(companiesRequired);
@@ -154,6 +167,8 @@ namespace Loan_Comp.Controllers
 
         }
 
+        #region Payment
+
         public ActionResult Payments(CompanyViewModel companyViewModel)
         {
             var context = new ApplicationDbContext();
@@ -196,6 +211,9 @@ namespace Loan_Comp.Controllers
             return Redirect(response.data.authorization_url);
 
         }
+
+        #endregion
+
 
 
 

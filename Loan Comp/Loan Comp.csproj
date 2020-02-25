@@ -300,6 +300,10 @@
     <Compile Include="Migrations\202002240100350_UpdatedClicksTable.Designer.cs">
       <DependentUpon>202002240100350_UpdatedClicksTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002251208492_AddedTheInfoTable.cs" />
+    <Compile Include="Migrations\202002251208492_AddedTheInfoTable.Designer.cs">
+      <DependentUpon>202002251208492_AddedTheInfoTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CompanyViewModel.cs" />
@@ -464,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002240100350_UpdatedClicksTable.resx">
       <DependentUpon>202002240100350_UpdatedClicksTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002251208492_AddedTheInfoTable.resx">
+      <DependentUpon>202002251208492_AddedTheInfoTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
