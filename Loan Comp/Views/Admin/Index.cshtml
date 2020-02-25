@@ -1,0 +1,32 @@
+﻿@model List<Loan_Comp.Models.CompanyViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Company Information</h2>
+
+<table class="table table-hover table-responsive table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Loan Type</th>
+            <th>Visits</th>
+            <th>Unique Visits</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var company in Model)
+        {
+            <tr>
+
+                <td>@company.Name</td>
+                <td>@company.LoanPurpose</td>
+                <td>@company.Count</td>
+                <td>@company.UniqueCount</td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+

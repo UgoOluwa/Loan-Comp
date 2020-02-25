@@ -1,0 +1,61 @@
+﻿@using Loan_Comp.Models
+@model  List<Loan_Comp.Models.CompanyViewModel>
+
+@{
+    ViewBag.Title = "Loan Companies";
+}
+<h2>@ViewBag.Title</h2>
+
+<div class="table-responsive-xl">
+    <table class="table table-responsive table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Company Name</th>
+                <th scope="col">Loan Purpose</th>
+                @if (Request.IsAuthenticated)
+                {
+                    <th scope="col">Rate</th>
+                }
+                <th scope="col">Company Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var count = 1;
+                var companyCount = Model.Count;
+                if (Model.Count == 0)
+                {
+                    <tr>
+                        <td> Sorry There are no companies that match your preference.</td>
+                    </tr>
+                }
+                foreach (var company in Model)
+                {
+                    <tr>
+                        <th scope="row">@count</th>
+                        <td>
+                            @Html.DisplayFor(modelItem => company.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => company.LoanPurpose)
+                        </td>
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => company.Rate)%
+                            </td>
+                        }
+
+                        @{ company.MinimumAmount = ViewBag.Amount; }
+
+                        <td><a href="@Url.Action("CompanyDetails", "Company",company)" class="btn btn-primary btn-lg">Get Details</a></td>
+
+                    </tr>
+                    count++;
+                }
+            }
+        </tbody>
+    </table>
+</div>

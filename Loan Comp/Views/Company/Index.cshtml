@@ -1,0 +1,58 @@
+﻿@model IEnumerable<double>
+@{
+    ViewBag.Title = "Loan Comparer";
+}
+
+<div class="center-container">
+    <!--header-->
+    <div class="header-w3l">
+        <h1>Welcome To Life </h1>
+        <p> Input the loan amount below</p>
+    </div>
+    <!--//header-->
+    <!--Error Message if Input field is empty-->
+    <div>
+        <h1>@ViewBag.Message</h1>
+    </div>
+    <!--Error-->
+    <!--main-->
+    <div class="agileits-register">
+        <form action="@Url.Action("Company","Company")" method="post">
+            <div class="w3_modal_body_grid w3_modal_body_grid1">
+                <span>Loan Amount :</span>
+                <input type="number" name="MinimumAmount" placeholder="Amount" required="" />
+                <div class="clear"> </div>
+            </div>
+
+            <div class="w3_modal_body_grid">
+                <span>Loan Type :</span>
+                <select id="w3_country" name="LoanPurpose" class="frm-field required">
+                    <option value="null">Select</option>
+                    <option value="Individual">Individual</option>
+                    <option value="Business">Business</option>
+                    <option value="Credit">Credit</option>
+                </select>
+                <div class="clear"> </div>
+            </div>
+            <div class="w3_modal_body_grid">
+                <span>Duration :</span>
+                <select id="w3_country" name="Duration" class="frm-field required">
+                    <option value="null">Select</option>
+                    @foreach (var year in Model)
+                    {
+                        <option value="@year">@year Months</option>
+                    }
+                </select>
+                <div class="clear"> </div>
+            </div>
+
+            <div class="w3_modal_body_grid">
+                <input type="submit" value="Apply Now" />
+                <div class="clear"></div>
+            </div>
+        </form>
+    </div>
+
+    <!--//main-->
+
+</div>

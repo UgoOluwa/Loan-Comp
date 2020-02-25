@@ -1,0 +1,91 @@
+﻿@model  Loan_Comp.Models.CompanyViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<h3>@ViewBag.Message</h3>
+
+<h4 style="color: aquamarine">@ViewBag.Response</h4>
+
+<section class="slider agileinfo">
+    <div class="flexslider w3ls">
+        <div class="item w3-agile">
+            <div class="agilegrid agilegrid1 jumbotron">
+                <h3>@Model.Name</h3>
+                <h2>Purpose: @Model.LoanPurpose</h2>
+                <h5>@Model.Terms</h5>
+                <p class="support">Rate @Model.Rate% </p>
+                <p class="support">You will pay @String.Format("{0:C}", Model.MaximumAmount) monthly for @Model.Duration Months</p>
+                <div class="sign w3-agile text-center">
+                    @Html.ActionLink("Get Now", "Clicks", "Company", Model, new { @class = "popup-with-zoom-anim" })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div>
+    <table id="myTable" class="table table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Repayment</th>
+                <th>Amount</th>
+                <th>Rate</th>
+                <th>Percentage Completion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                double count = 0;
+                double amount = Model.MinimumAmount;
+            }
+
+            @for (int i = 0; i < Model.Duration; i++)
+            {
+
+                Model.MinimumAmount = Model.MinimumAmount - Model.MaximumAmount;
+                count = count + Model.MaximumAmount;
+
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>
+                        @String.Format("{0:C}", @Model.MaximumAmount)
+                    </td>
+                    <td>
+                        @String.Format("{0:C}", Model.MinimumAmount)
+                    </td>
+                    <td>
+                        @Model.Rate%
+                    </td>
+                    <td>@(Math.Truncate((count / amount) * 100))%</td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                "paging": false,
+                "searching": false,
+                "info": false,
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+
+            });
+        });
+    </script>
+
+
+}
+
+
