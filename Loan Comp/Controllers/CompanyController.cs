@@ -44,6 +44,23 @@ namespace Loan_Comp.Controllers
         [Authorize]
         public ActionResult CompanyDetails(CompanyViewModel company)
         {
+            using (var context = new ApplicationDbContext())
+            {
+                var currentUser = System.Web.HttpContext.Current.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>()
+                    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+                var info = new Info
+                {
+                    Duration = company.Duration,
+                    Amount = company.MinimumAmount,
+                    UserId = currentUser.Id
+                };
+
+                context.Info.Add(info);
+                context.SaveChanges();
+            }
+
 
             var interest = (company.Rate * company.MinimumAmount) / 100;
             company.MinimumAmount = interest + company.MinimumAmount;
@@ -64,21 +81,11 @@ namespace Loan_Comp.Controllers
             using (var context = new ApplicationDbContext())
             {
                 //Get the Current User
-                var currentUser = System.Web.HttpContext.Current.GetOwinContext()
-                    .GetUserManager<ApplicationUserManager>()
-                    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-                var info = new Info
-                {
-                    Duration = company.Duration,
-                    Amount = company.MinimumAmount,
-                    UserId = currentUser.Id
-                };
 
-                context.Info.Add(info);
                 var companies = context.Companies.ToList();
-                context.SaveChanges();
                 var companiesRequired = CheckAmount(companies, company);
                 ViewBag.Amount = company.MinimumAmount;
+                Session["Duration"] = company.Duration;
                 return View(companiesRequired);
             }
 

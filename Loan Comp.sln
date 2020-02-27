@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loan Comp", "Loan Comp\Loan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loan Comp.Tests", "Loan Comp.Tests\Loan Comp.Tests.csproj", "{C5384F5A-5FB3-446E-AF31-4EB91F27FD1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{2FBCD6D5-7DD2-4025-BAAB-187ACB63CF03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C5384F5A-5FB3-446E-AF31-4EB91F27FD1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5384F5A-5FB3-446E-AF31-4EB91F27FD1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5384F5A-5FB3-446E-AF31-4EB91F27FD1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBCD6D5-7DD2-4025-BAAB-187ACB63CF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBCD6D5-7DD2-4025-BAAB-187ACB63CF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBCD6D5-7DD2-4025-BAAB-187ACB63CF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBCD6D5-7DD2-4025-BAAB-187ACB63CF03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
