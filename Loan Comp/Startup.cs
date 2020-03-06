@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System;
 
 [assembly: OwinStartupAttribute(typeof(Loan_Comp.Startup))]
 namespace Loan_Comp
@@ -10,5 +11,7 @@ namespace Loan_Comp
         {
             ConfigureAuth(app);
         }
+
+
     }
 }

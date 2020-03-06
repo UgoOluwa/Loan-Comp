@@ -116,9 +116,9 @@ namespace Loan_Comp.Controllers
             var manager = new ApplicationUserManager(new UserStore<User>(context));
             manager.AddToRole(user.Id, RoleName);
 
-            //ViewBag.ResultMessage = "Role created successfully !";
+            ViewBag.ResultMessage = "Role created successfully !";
 
-            // prepopulat roles for the view dropdown
+            // populate roles for the view dropdown
             var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = list;
 
